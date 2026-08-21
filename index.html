@@ -176,8 +176,35 @@ body {
   display: block;
   margin: 0.06in 0 0;
 }
-.floor-svg a { text-decoration: none; }
+.floor-svg a { text-decoration: none; cursor: pointer; }
 .floor-svg a:hover circle { stroke: #0b57d0; stroke-width: 2.4; }
+.map-pop {
+  position: fixed;
+  z-index: 20;
+  min-width: 180px;
+  max-width: 260px;
+  padding: 8px 10px;
+  background: #fff;
+  color: #122;
+  border: 1px solid #122;
+  box-shadow: 0 8px 22px rgba(0,0,0,.22);
+  font: 600 9pt/1.35 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  pointer-events: none;
+}
+.map-pop[hidden] { display: none; }
+.map-pop .k { font-size: 8pt; letter-spacing: 0.04em; text-transform: uppercase; color: #666; }
+.map-pop .id { font-size: 12pt; font-weight: 700; }
+.map-pop .tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 8pt;
+  font-weight: 700;
+  color: #fff;
+  vertical-align: 1px;
+}
+.map-pop .cc { margin-top: 4px; font-weight: 700; }
+.map-pop .who { margin-top: 3px; font-size: 8.5pt; color: #444; }
 .sheet {
   width: 8.5in;
   min-height: 11in;
@@ -455,6 +482,7 @@ body {
   }
   .who a { text-decoration: none; color: inherit; }
   .card:target, .mini:target { outline: none; }
+  .map-pop { display: none !important; }
   .section-label { page-break-after: avoid; }
   .greens:last-child { page-break-after: auto; }
 }
@@ -577,23 +605,22 @@ body {
       <h2 class="kitchen">Kitchen explosion · L&amp;S 3A / 3B</h2>
       
 <svg class="floor-svg kitchen" viewBox="0 0 360 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kitchen explosion floor map">
-  <defs>
-    <marker id="cw-kitchen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0 .8 L7.2 4 L0 7.2z" fill="#1F4E79"/>
-    </marker>
-  </defs>
   <rect x="50" y="16" width="260" height="500" rx="10" fill="#f6f4ef" stroke="#122" stroke-width="1.8"/>
   <rect x="116" y="150" width="128" height="236" rx="8" fill="#e6d5b8" stroke="#8a7048" stroke-width="1.6"/>
   <text x="180" y="258" text-anchor="middle" fill="#6a542e" font-size="12" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">TABLE</text>
   <text x="180" y="274" text-anchor="middle" fill="#6a542e" font-size="8" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">walk around</text>
-  <path d="M106 426 L106 104 Q106 88 122 88 L238 88 Q254 88 254 104 L254 426" fill="none" stroke="#1F4E79" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.85"/>
-  <path d="M106 266 L106 146" fill="none" stroke="#1F4E79" stroke-width="2.1" marker-end="url(#cw-kitchen)"/>
-  <path d="M254 146 L254 266" fill="none" stroke="#1F4E79" stroke-width="2.1" marker-end="url(#cw-kitchen)"/>
+  <path d="M106 434 L106 116 Q106 100 122 100 L238 100 Q254 100 254 116 L254 434" fill="none" stroke="#1F4E79" stroke-width="1.35" stroke-dasharray="4 5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <polygon points="106,161 102.4,169.2 109.6,169.2" fill="#1F4E79"/>
+  <polygon points="185,100 176.8,96.4 176.8,103.6" fill="#1F4E79"/>
+  <polygon points="254,271 250.4,262.8 257.6,262.8" fill="#1F4E79"/>
   <rect x="46" y="235.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M46 235.0 L34 235.0" fill="none" stroke="#122" stroke-width="1.4"/><rect x="46" y="269.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M46 269.0 L34 269.0" fill="none" stroke="#122" stroke-width="1.4"/>
   <rect x="306" y="235.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M314 235.0 L326 235.0" fill="none" stroke="#122" stroke-width="1.4"/><rect x="306" y="269.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M314 269.0 L326 269.0" fill="none" stroke="#122" stroke-width="1.4"/>
-  <path d="M50 249.0 L106 249.0 L106 166" fill="none" stroke="#1F4E79" stroke-width="2" marker-end="url(#cw-kitchen)"/>
-  <path d="M50 283.0 L106 283.0 L106 376" fill="none" stroke="#3d6a9a" stroke-width="1.8" marker-end="url(#cw-kitchen)"/>
-  <path d="M310 249.0 L254 249.0 L254 376" fill="none" stroke="#7a93ad" stroke-width="2" marker-end="url(#cw-kitchen)"/>
+  <path d="M54 249.0 L106 249.0" fill="none" stroke="#1F4E79" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="110,249.0 101.8,245.4 101.8,252.6" fill="#1F4E79"/>
+  <path d="M54 283.0 L106 283.0" fill="none" stroke="#3d6a9a" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="110,283.0 101.8,279.4 101.8,286.6" fill="#3d6a9a"/>
+  <path d="M306 249.0 L254 249.0" fill="none" stroke="#7a93ad" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="250,249.0 258.2,245.4 258.2,252.6" fill="#7a93ad"/>
   <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
     <rect x="2" y="242.0" width="44" height="15" rx="7" fill="#1F4E79"/>
     <text x="24" y="253.0" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Team 1</text>
@@ -602,7 +629,7 @@ body {
     <rect x="314" y="242.0" width="44" height="15" rx="7" fill="#7a93ad"/>
     <text x="336" y="253.0" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Team 3</text>
   </g>
-  <a href="#c-K-1-3A-M"><circle cx="88" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="475" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-1</text></a><a href="#c-K-3-3A-M"><circle cx="88" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="88" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-3</text></a><a href="#c-K-PG-3A-F"><circle cx="88" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="100" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-PG</text></a><a href="#c-K-4-3A-M"><circle cx="120" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-4</text></a><a href="#c-K-2-3A-M"><circle cx="180" cy="44" r="16" fill="#9A7B00" stroke="#fff" stroke-width="1.5"/><text x="180" y="48" text-anchor="middle" fill="#1a1400" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-2</text></a><a href="#c-K-7-3A-M"><circle cx="240" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="240" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-7</text></a><a href="#c-K-G01-3A-M"><circle cx="272" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-G01</text></a><a href="#c-K-5-3A-x"><circle cx="272" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="272" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-5</text></a><a href="#c-K-G02-3A-M"><circle cx="272" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="475" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-G02</text></a><a href="#c-K-6-3A-M"><circle cx="180" cy="486" r="16" fill="#1A1A1A" stroke="#fff" stroke-width="1.5"/><text x="180" y="490" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-6</text></a>
+  <a href="#c-K-1-3A-M" class="map-dot" data-id="K-1" data-start="Green" data-title="Minor burns — you can walk" data-cc="Minor burns, hands / forearms" data-who="Hassan / Rosa" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="88" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="475" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-1</text><text x="88" y="493" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Hassan</tspan><tspan x="88" dy="6.2">Rosa</tspan></text></a><a href="#c-K-3-3A-M" class="map-dot" data-id="K-3" data-start="Red" data-title="Impaled knife in the leg" data-cc="Impaled object, R leg — shock" data-who="Darnell / Sofia" data-pos="On the ground" data-moulage="Medium" data-color="#C62828"><circle cx="88" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="88" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-3</text><text x="88" y="418" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Darnell</tspan><tspan x="88" dy="6.2">Sofia</tspan></text></a><a href="#c-K-PG-3A-F" class="map-dot" data-id="K-PG" data-start="Green" data-title="Pregnant — you can walk" data-cc="Pregnant, walking, scared for the baby" data-who="Camila" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="88" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="100" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-PG</text><text x="88" y="118" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Camila</tspan></text></a><a href="#c-K-4-3A-M" class="map-dot" data-id="K-4" data-start="Red" data-title="Both arms “gone”" data-cc="Bilateral arm amputation" data-who="Isaac / Carmen" data-pos="On the ground" data-moulage="Heavy" data-color="#C62828"><circle cx="120" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-4</text><text x="120" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="120" dy="0">Isaac</tspan><tspan x="120" dy="6.2">Carmen</tspan></text></a><a href="#c-K-2-3A-M" class="map-dot" data-id="K-2" data-start="Yellow" data-title="Deep forearm burn — will not walk" data-cc="Deep burn, L forearm — won’t walk" data-who="Greg / Fatima" data-pos="On the ground" data-moulage="Medium" data-color="#9A7B00"><circle cx="180" cy="44" r="16" fill="#9A7B00" stroke="#fff" stroke-width="1.5"/><text x="180" y="48" text-anchor="middle" fill="#1a1400" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-2</text><text x="180" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="180" dy="0">Greg</tspan><tspan x="180" dy="6.2">Fatima</tspan></text></a><a href="#c-K-7-3A-M" class="map-dot" data-id="K-7" data-start="Red" data-title="Upper-leg laceration — pouring" data-cc="Upper-leg laceration, severe bleed" data-who="Vince / Dina" data-pos="On the ground" data-moulage="Heavy" data-color="#C62828"><circle cx="240" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="240" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-7</text><text x="240" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="240" dy="0">Vince</tspan><tspan x="240" dy="6.2">Dina</tspan></text></a><a href="#c-K-G01-3A-M" class="map-dot" data-id="K-G01" data-start="Green" data-title="Steam on fingers" data-cc="Steam on fingers" data-who="Carl / Ines" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="272" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-G01</text><text x="272" y="118" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">Carl</tspan><tspan x="272" dy="6.2">Ines</tspan></text></a><a href="#c-K-5-3A-x" class="map-dot" data-id="K-5" data-start="Red" data-title="Airway dummy — not a volunteer" data-cc="Unresponsive, snoring (dummy)" data-who="dummy" data-pos="On the ground" data-moulage="—" data-color="#C62828"><circle cx="272" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="272" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-5</text><text x="272" y="418" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">dummy</tspan></text></a><a href="#c-K-G02-3A-M" class="map-dot" data-id="K-G02" data-start="Green" data-title="Soot on face" data-cc="Soot on face" data-who="Lou / Kira" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="272" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="475" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-G02</text><text x="272" y="493" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">Lou</tspan><tspan x="272" dy="6.2">Kira</tspan></text></a><a href="#c-K-6-3A-M" class="map-dot" data-id="K-6" data-start="Black" data-title="Blast / head — not breathing" data-cc="Blast / head, not breathing" data-who="Paul / June" data-pos="On the ground" data-moulage="Light" data-color="#1A1A1A"><circle cx="180" cy="486" r="16" fill="#1A1A1A" stroke="#fff" stroke-width="1.5"/><text x="180" y="490" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">K-6</text><text x="180" y="508" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="180" dy="0">Paul</tspan><tspan x="180" dy="6.2">June</tspan></text></a>
 </svg>
 
     </div>
@@ -610,23 +637,22 @@ body {
       <h2 class="club">Nightclub · L&amp;S 2A / 2B</h2>
       
 <svg class="floor-svg club" viewBox="0 0 360 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nightclub floor map">
-  <defs>
-    <marker id="cw-club" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0 .8 L7.2 4 L0 7.2z" fill="#1F4E79"/>
-    </marker>
-  </defs>
   <rect x="50" y="16" width="260" height="500" rx="10" fill="#f6f4ef" stroke="#122" stroke-width="1.8"/>
   <rect x="116" y="150" width="128" height="236" rx="8" fill="#e6d5b8" stroke="#8a7048" stroke-width="1.6"/>
   <text x="180" y="258" text-anchor="middle" fill="#6a542e" font-size="12" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">TABLE</text>
   <text x="180" y="274" text-anchor="middle" fill="#6a542e" font-size="8" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">walk around</text>
-  <path d="M106 426 L106 104 Q106 88 122 88 L238 88 Q254 88 254 104 L254 426" fill="none" stroke="#1F4E79" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.85"/>
-  <path d="M106 266 L106 146" fill="none" stroke="#1F4E79" stroke-width="2.1" marker-end="url(#cw-club)"/>
-  <path d="M254 146 L254 266" fill="none" stroke="#1F4E79" stroke-width="2.1" marker-end="url(#cw-club)"/>
+  <path d="M106 434 L106 116 Q106 100 122 100 L238 100 Q254 100 254 116 L254 434" fill="none" stroke="#1F4E79" stroke-width="1.35" stroke-dasharray="4 5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <polygon points="106,161 102.4,169.2 109.6,169.2" fill="#1F4E79"/>
+  <polygon points="185,100 176.8,96.4 176.8,103.6" fill="#1F4E79"/>
+  <polygon points="254,271 250.4,262.8 257.6,262.8" fill="#1F4E79"/>
   <rect x="46" y="235.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M46 235.0 L34 235.0" fill="none" stroke="#122" stroke-width="1.4"/><rect x="46" y="269.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M46 269.0 L34 269.0" fill="none" stroke="#122" stroke-width="1.4"/>
   <rect x="306" y="235.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M314 235.0 L326 235.0" fill="none" stroke="#122" stroke-width="1.4"/><rect x="306" y="269.0" width="8" height="28" fill="#fff" stroke="#122" stroke-width="1.3"/><path d="M314 269.0 L326 269.0" fill="none" stroke="#122" stroke-width="1.4"/>
-  <path d="M50 249.0 L106 249.0 L106 166" fill="none" stroke="#1F4E79" stroke-width="2" marker-end="url(#cw-club)"/>
-  <path d="M50 283.0 L106 283.0 L106 376" fill="none" stroke="#3d6a9a" stroke-width="1.8" marker-end="url(#cw-club)"/>
-  <path d="M310 249.0 L254 249.0 L254 376" fill="none" stroke="#7a93ad" stroke-width="2" marker-end="url(#cw-club)"/>
+  <path d="M54 249.0 L106 249.0" fill="none" stroke="#1F4E79" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="110,249.0 101.8,245.4 101.8,252.6" fill="#1F4E79"/>
+  <path d="M54 283.0 L106 283.0" fill="none" stroke="#3d6a9a" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="110,283.0 101.8,279.4 101.8,286.6" fill="#3d6a9a"/>
+  <path d="M306 249.0 L254 249.0" fill="none" stroke="#7a93ad" stroke-width="1.6" stroke-linecap="round"/>
+  <polygon points="250,249.0 258.2,245.4 258.2,252.6" fill="#7a93ad"/>
   <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
     <rect x="2" y="242.0" width="44" height="15" rx="7" fill="#1F4E79"/>
     <text x="24" y="253.0" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Team 1</text>
@@ -635,7 +661,7 @@ body {
     <rect x="314" y="242.0" width="44" height="15" rx="7" fill="#7a93ad"/>
     <text x="336" y="253.0" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">Team 3</text>
   </g>
-  <a href="#c-NC-1-2A-M"><circle cx="88" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="475" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-1</text></a><a href="#c-NC-2-2A-M"><circle cx="88" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="88" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-2</text></a><a href="#c-NC-GER-2A-M"><circle cx="88" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-GER</text></a><a href="#c-NC-3-2A-M"><circle cx="120" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-3</text></a><a href="#c-NC-4-2A-M"><circle cx="180" cy="44" r="16" fill="#9A7B00" stroke="#fff" stroke-width="1.5"/><text x="180" y="48" text-anchor="middle" fill="#1a1400" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-4</text></a><a href="#c-NC-6-2A-M"><circle cx="240" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="240" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-6</text></a><a href="#c-NC-G01-2A-M"><circle cx="272" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-G01</text></a><a href="#c-NC-7-2A-M"><circle cx="272" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="272" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-7</text></a><a href="#c-NC-G02-2A-M"><circle cx="272" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="475" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-G02</text></a><a href="#c-NC-5-2A-M"><circle cx="180" cy="486" r="16" fill="#1A1A1A" stroke="#fff" stroke-width="1.5"/><text x="180" y="490" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-5</text></a>
+  <a href="#c-NC-1-2A-M" class="map-dot" data-id="NC-1" data-start="Green" data-title="Arm graze — you can walk" data-cc="GSW graze, L upper arm" data-who="Malik / Nia" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="88" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="475" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-1</text><text x="88" y="493" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Malik</tspan><tspan x="88" dy="6.2">Nia</tspan></text></a><a href="#c-NC-2-2A-M" class="map-dot" data-id="NC-2" data-start="Red" data-title="Chest wound — gasping (not a bloodbath)" data-cc="GSW chest, short of breath" data-who="Diego / Priya" data-pos="On the ground" data-moulage="Light" data-color="#C62828"><circle cx="88" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="88" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-2</text><text x="88" y="418" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Diego</tspan><tspan x="88" dy="6.2">Priya</tspan></text></a><a href="#c-NC-GER-2A-M" class="map-dot" data-id="NC-GER" data-start="Green" data-title="Geriatric — you can walk" data-cc="Elderly, walking wounded" data-who="Harold / Dorothy" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="88" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="88" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-GER</text><text x="88" y="118" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="88" dy="0">Harold</tspan><tspan x="88" dy="6.2">Dorothy</tspan></text></a><a href="#c-NC-3-2A-M" class="map-dot" data-id="NC-3" data-start="Red" data-title="Upper-thigh gunshot — pouring" data-cc="GSW thigh, severe bleed" data-who="Marcus / Keisha" data-pos="On the ground" data-moulage="Heavy" data-color="#C62828"><circle cx="120" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-3</text><text x="120" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="120" dy="0">Marcus</tspan><tspan x="120" dy="6.2">Keisha</tspan></text></a><a href="#c-NC-4-2A-M" class="map-dot" data-id="NC-4" data-start="Yellow" data-title="Lower-leg gunshot — holding pressure" data-cc="GSW lower leg, holding pressure" data-who="Ben / Lauren" data-pos="On the ground" data-moulage="Medium" data-color="#9A7B00"><circle cx="180" cy="44" r="16" fill="#9A7B00" stroke="#fff" stroke-width="1.5"/><text x="180" y="48" text-anchor="middle" fill="#1a1400" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-4</text><text x="180" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="180" dy="0">Ben</tspan><tspan x="180" dy="6.2">Lauren</tspan></text></a><a href="#c-NC-6-2A-M" class="map-dot" data-id="NC-6" data-start="Red" data-title="Forearm — will not stop" data-cc="GSW forearm, won’t stop bleeding" data-who="Luis / Mei" data-pos="On the ground" data-moulage="Heavy" data-color="#C62828"><circle cx="240" cy="44" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="240" y="48" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-6</text><text x="240" y="66" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="240" dy="0">Luis</tspan><tspan x="240" dy="6.2">Mei</tspan></text></a><a href="#c-NC-G01-2A-M" class="map-dot" data-id="NC-G01" data-start="Green" data-title="Looking for a friend" data-cc="Looking for a friend" data-who="Theo / Lila" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="272" cy="96" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="100" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-G01</text><text x="272" y="118" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">Theo</tspan><tspan x="272" dy="6.2">Lila</tspan></text></a><a href="#c-NC-7-2A-M" class="map-dot" data-id="NC-7" data-start="Red" data-title="Lower leg — collapsed" data-cc="GSW lower leg, collapsed" data-who="Kyle / Dana" data-pos="On the ground" data-moulage="Heavy" data-color="#C62828"><circle cx="272" cy="396" r="16" fill="#C62828" stroke="#fff" stroke-width="1.5"/><text x="272" y="400" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-7</text><text x="272" y="418" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">Kyle</tspan><tspan x="272" dy="6.2">Dana</tspan></text></a><a href="#c-NC-G02-2A-M" class="map-dot" data-id="NC-G02" data-start="Green" data-title="Ringing ears" data-cc="Ringing ears" data-who="Felix / Nina" data-pos="Walking" data-moulage="Light" data-color="#2E7D32"><circle cx="272" cy="471" r="16" fill="#2E7D32" stroke="#fff" stroke-width="1.5"/><text x="272" y="475" text-anchor="middle" fill="#fff" font-size="6.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-G02</text><text x="272" y="493" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="272" dy="0">Felix</tspan><tspan x="272" dy="6.2">Nina</tspan></text></a><a href="#c-NC-5-2A-M" class="map-dot" data-id="NC-5" data-start="Black" data-title="Head wound — not breathing" data-cc="GSW head, not breathing" data-who="Victor / Hannah" data-pos="On the ground" data-moulage="Light" data-color="#1A1A1A"><circle cx="180" cy="486" r="16" fill="#1A1A1A" stroke="#fff" stroke-width="1.5"/><text x="180" y="490" text-anchor="middle" fill="#fff" font-size="7.0" font-weight="700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">NC-5</text><text x="180" y="508" text-anchor="middle" fill="#122" font-size="5.2" font-weight="600" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"><tspan x="180" dy="0">Victor</tspan><tspan x="180" dy="6.2">Hannah</tspan></text></a>
 </svg>
 
     </div>
@@ -5737,5 +5763,45 @@ body {
 </article>
 </section>
   </div>
+  <div id="map-pop" class="map-pop" hidden></div>
+  <script>
+  (function () {
+    const pop = document.getElementById("map-pop");
+    if (!pop) return;
+    const hex = { Green: "#2E7D32", Yellow: "#9A7B00", Red: "#C62828", Black: "#1A1A1A" };
+    function place(e) {
+      const pad = 10;
+      pop.hidden = false;
+      const r = pop.getBoundingClientRect();
+      let x = e.clientX + 14;
+      let y = e.clientY + 16;
+      if (x + r.width > window.innerWidth - pad) x = e.clientX - r.width - 12;
+      if (y + r.height > window.innerHeight - pad) y = e.clientY - r.height - 12;
+      if (x < pad) x = pad;
+      if (y < pad) y = pad;
+      pop.style.left = x + "px";
+      pop.style.top = y + "px";
+    }
+    document.querySelectorAll("a.map-dot").forEach((a) => {
+      const show = (e) => {
+        const d = a.dataset;
+        const color = d.color || hex[d.start] || "#1F4E79";
+        const fg = d.start === "Yellow" ? "#1a1400" : "#fff";
+        const moulage = d.moulage && d.moulage !== "—" ? d.moulage + " moulage" : "";
+        pop.innerHTML =
+          '<div class="k">Patient</div>' +
+          '<div class="id">' + (d.id || "") +
+          ' <span class="tag" style="background:' + color + ";color:" + fg + '">' + (d.start || "") + "</span></div>" +
+          (d.title ? "<div>" + d.title + "</div>" : "") +
+          (d.cc ? '<div class="cc">' + d.cc + "</div>" : "") +
+          '<div class="who">' + [d.who, d.pos, moulage].filter(Boolean).join(" · ") + "</div>";
+        place(e);
+      };
+      a.addEventListener("mouseenter", show);
+      a.addEventListener("mousemove", place);
+      a.addEventListener("mouseleave", () => { pop.hidden = true; });
+    });
+  })();
+  </script>
 </body>
 </html>
