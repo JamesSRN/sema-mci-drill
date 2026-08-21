@@ -182,7 +182,7 @@ body {
   position: fixed;
   z-index: 20;
   min-width: 180px;
-  max-width: 260px;
+  max-width: 300px;
   padding: 8px 10px;
   background: #fff;
   color: #122;
@@ -5799,7 +5799,7 @@ body {
           '<div class="k">Patient</div>' +
           '<div class="id">' + attr("id") +
           ' <span class="tag" style="background:' + color + ";color:" + fg + '">' + start + "</span></div>" +
-          (names.length ? '<div class="names">' + names.join("<br>") + "</div>" : "") +
+          (names.length ? '<div class="names">' + names.join(" / ") + "</div>" : "") +
           (attr("title") ? "<div>" + attr("title") + "</div>" : "") +
           (attr("cc") ? '<div class="cc">' + attr("cc") + "</div>" : "") +
           '<div class="who">' + [attr("pos"), moulage].filter(Boolean).join(" · ") + "</div>";
